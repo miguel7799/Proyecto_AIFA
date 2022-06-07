@@ -54,14 +54,9 @@ router.post('/request/new-request', isAuthenticated,async (req, res) =>{
 });
 
 router.get('/acepted/:gate_number' , isAuthenticated, async(req, res)=>{
-    // const { gate_number }=req.params;
-    // const change = await Gates.findById(gate_number);
-    // change.status = "disable";
-    // await change.save();
-    // await Request.remove({gate_number: gate_number});
-    // res.redirect('/request');
     const { gate_number }=req.params;
     await Request.deleteOne({_gate_number: gate_number});
+    await Gates.findOneAndUpdate({_gate_number:gate_number}, {status:"disable"});
     res.redirect('/request');
     
     
@@ -72,6 +67,7 @@ router.get('/acepted/:gate_number' , isAuthenticated, async(req, res)=>{
 router.get('/declined/:gate_number' , isAuthenticated, async(req, res)=>{
     const { gate_number }=req.params;
     await Request.deleteOne({_gate_number: gate_number});
+    await Gates.findOneAndUpdate({_gate_number:gate_number}, {status:"enable"});
     // console.log(req.params.id)
     // res.send('recivido');
     res.redirect('/request');

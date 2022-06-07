@@ -19,39 +19,11 @@ router.get('/change-status/:id', isAuthenticated ,async (req, res) =>{
     change.status = "request";
     await change.save();
     console.log(change);
-    res.redirect('/request/add')
+    res.redirect('/request/add?gate='+ change.gate_number)
 });
 
-// router.post('/send-email', async (req, res) => {
-    // const transporter = nodemailer.createTransport({
-    //     host: "smtp.ethereal.email",
-    //     port: 587,
-    //     secure: false, // true for 465, false for other ports
-    //     auth: {
-    //       user: "ik3ba2rnopkcovwd@ethereal.email", // generated ethereal user
-    //       pass: "K8Z7bE182sCrvHaCjM", // generated ethereal password
-    //     },
-    //   });
 
-    // const mailOcptions = await transporter.sendMail({
-    //     from: "AIFA Request Services", // sender address
-    //     to: "miguelmaldo2398@gmail.com", // list of receivers
-    //     subject: "Respuesta de Reserva de Puerta", // Subject line
-    //     text: "Hello world?", // plain text body
-    // });
 
-    // console.log("menasje enviado", mailOcptions.messageId);
-    // res.redirect('/gates');
-
-    // transporter.sendMail(mailOcptions ,(error, info) =>{
-    //     if(error){
-    //         res.status(500).send(error.message);
-    //     } else{
-    //         console.log('email enviado');
-    //         res.status(200).jsonp(req.body);
-    //     }
-    // });
-// });
 
 
 
