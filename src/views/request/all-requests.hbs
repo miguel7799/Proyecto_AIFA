@@ -1,0 +1,56 @@
+<head>
+    <link href="/css/stylesschedule.css" rel="stylesheet" />
+</head>
+    
+        <header class="bg-dark py-5" style="background-image: url(/images/AIFA5.jpg);">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">AIFA</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Aeropuerto Internacional Felipe Angeles</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5"> 
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" >
+                    {{#each requests}}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="/images/GATE REQUEST.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+
+                                    <h5 class="card-title" style="color:red" > 
+                                        Gate {{gate_number}}
+                                    </h5>
+                                    <h5 class="fw-bolder" style="color:blue"> 
+                                        {{company}}
+                                    </h5>
+                                    <!-- Product price-->
+                                    <h5 class="fw-bolder" style="color:black"> 
+                                        {{current_date}} 
+                                    </h5>
+                                    <h5 class="fw-bolder" style="color:black"> 
+                                        {{date_request}} 
+                                    </h5>
+                                     <div class="text-center">
+                                   
+                                    <a href="/acepted/{{gate_number}}" class="btn btn-success">Aceptar</a>
+                                
+                                    <a href="/declined/{{gate_number}}"     class="btn btn-danger">Declinar</a>
+                                 
+                 
+                                    </div>
+                                </div>      
+                            </div>                           
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                
+            </div>
+        </section>

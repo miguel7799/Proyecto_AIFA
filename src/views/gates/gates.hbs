@@ -1,0 +1,64 @@
+<head>
+    <link href="/css/stylesschedule.css" rel="stylesheet" />
+</head>
+<header class="bg-dark py-5" style="background-image: url(/images/AIFA5.jpg);">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-left text-white">
+            <h1 style="color:white" >Bienvenido {{user.name}}</h1>
+        </div>
+        <div class="text-center text-white">
+            <h1 style="color:white" class="display-4 fw-bolder">AIFA</h1>
+            <p style="color:white"class="lead fw-normal text-white-50 mb-0">Aeropuerto Internacional Felipe Angeles</p>
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {{#each gates}}
+            <div class="col mb-5">
+                
+                <div class="card h-100">
+    
+                    <!-- Product image-->
+                    {{#ifCond status '==' "enable"}}
+                    <img class="card-img-top" src="/images/Disponible.jpg" alt="..." />
+                    {{/ifCond}}
+                    
+                    {{#ifCond status '==' "disable"}}
+                    <img class="card-img-top" src="/images/Reservada.jpg" alt="..." />
+                    {{/ifCond}}
+
+                    {{#ifCond status '==' "request"}}
+                    <img class="card-img-top" src="/images/Revision.jpg" alt="..." />
+                    {{/ifCond}}
+
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder" style="color:black"> Gate {{gate_number}}</h5>
+                            <h5 class="fw-bolder"> </h5>
+                            <!-- Product price-->
+                            <h5 class="fw-bolder" style="color:black"> {{status}}</h5>
+                        </div>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                        {{#ifCond status '==' "enable"}}
+                        <a href="/change-status/{{_id}}" class="btn btn-danger">Reservar</a>
+                        {{else}}
+                        <button href="" class="btn btn-danger" disabled>Reservar</button>
+                        {{/ifCond}}
+                 
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        
+    </div>
+</section>

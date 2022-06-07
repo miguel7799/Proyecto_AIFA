@@ -1,0 +1,61 @@
+<!-- Errors-->
+{{#each errors}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{text}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>  
+{{/each}}
+
+<head>
+    <link href="/css/stylesschedule.css" rel="stylesheet" />
+</head>
+
+<form action="/request/new-request" method="POST">
+  <div class="col-md-4 mx-auto">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>Reserva</h3>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+              <label class="label" >Seleccciona tu puerta</label>
+              <select class="form-select" aria-label="Default select example" name="gate_number">
+              <option selected>GATE</option>
+              <option value="1">Gate 1</option>
+              <option value="2">Gate 2</option>
+              <option value="3">Gate 3</option>
+              <option value="4">Gate 4</option>
+              <option value="5">Gate 5</option>
+              <option value="6">Gate 6</option>
+              <option value="7">Gate 7</option>
+              <option value="8">Gate 8</option>
+              </select>
+             <br>
+              <label class="label">Selecciona tu Aerolinea</label>
+              <select class="form-select" aria-label="Default select example" name="company">
+              <option selected>Aerolinea</option>
+              <option value="Volaris">Volaris</option>
+              <option value="Aeromexico">Aeromexico</option>
+              <option value="Viva Aerobus">Viva Aerobus</option>
+              </select>
+            <br>
+              <label class="label" >Selecciona la fecha de Reserva</label>
+
+            <br>
+            <input type="date" id="start" name="date_request"
+              value="2022-06-03"
+              min="2022-06-03" max="2022-06-18">
+              <br>
+              <input type="hidden" name="current_date">
+              <br>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit">
+                Save
+              </button>
+            </div>
+        </div>
+      </div>
+  </div>
+</form>

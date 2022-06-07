@@ -1,0 +1,49 @@
+<head>
+    <link rel="stylesheet" href="/css/stylesignin.css">
+</head>
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">ACCESO AIFA</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(/images/AIFA.jpg);">
+			      </div>
+			<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Sign In</h3>
+			      		</div>
+						<div class="w-100">
+							<p class="social-media d-flex justify-content-end">
+							</p>
+						</div>
+			      	</div>
+						<form action="/users/signin" method="POST">
+							<div class="form-group mb-3">
+								<input type="email" class="form-control" 
+								name="email" placeholder="Email" required>
+							</div>
+							<div class="form-group mb-3">
+								<input type="password" class="form-control" 
+								name="password" placeholder="Password" required>
+							</div>
+							<div class="form-group">
+								<button type="submit" class=" btn btn-primary btn-block">
+									Sign In
+								</button>
+							</div>
+							<div class="form-group">
+								<a href="/users/signup" class="btn btn-light">SignUp</a>
+							</div>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
