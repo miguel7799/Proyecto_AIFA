@@ -1,10 +1,10 @@
 <head>
     <link href="/css/stylesschedule.css" rel="stylesheet" />
 </head>
-<header class="bg-dark py-5" style="background-image: url(/images/AIFA5.jpg);">
-    <div class="container px-4 px-lg-5 my-5">
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5" >
         <div class="text-left text-white">
-            <h1 style="color:white" >Bienvenido {{user.name}}</h1>
+            <h1 style="color:white" >Welcome {{user.name}}</h1>
         </div>
         <div class="text-center text-white">
             <h1 style="color:white" class="display-4 fw-bolder">AIFA</h1>
@@ -48,9 +48,9 @@
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="text-center">
                         {{#ifCond status '==' "enable"}}
-                        <a href="/change-status/{{_id}}" class="btn btn-danger">Reservar</a>
+                        <a href="/change-status/{{_id}}" class="btn btn-danger">RESERVE</a>
                         {{else}}
-                        <button href="" class="btn btn-danger" disabled>Reservar</button>
+                        <button href="" class="btn btn-danger" disabled>RESERVE</button>
                         {{/ifCond}}
                  
                         </div>
