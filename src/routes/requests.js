@@ -31,8 +31,8 @@ router.post('/request/new-request', isAuthenticated,async (req, res) =>{
             port: 587,
             secure: false, // true for 465, false for other ports
             auth: {
-              user: "ik3ba2rnopkcovwd@ethereal.email", // generated ethereal user
-              pass: "K8Z7bE182sCrvHaCjM", // generated ethereal password
+              user: "tyler.lang46@ethereal.email", // generated ethereal user
+              pass: "4XJ99jkh9zB4NytbnW", // generated ethereal password
             },
           });
     
@@ -68,11 +68,10 @@ router.get('/declined/:gate_number' , isAuthenticated, async(req, res)=>{
     const { gate_number }=req.params;
     await Request.deleteOne({_gate_number: gate_number});
     await Gates.findOneAndUpdate({_gate_number:gate_number}, {status:"enable"});
-    // console.log(req.params.id)
-    // res.send('recivido');
     res.redirect('/request');
     
 });
+
 
 
 
