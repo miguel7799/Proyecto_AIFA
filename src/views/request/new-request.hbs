@@ -20,19 +20,19 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-              <label class="label" >Select Gate</label>
-              <h1>Gate </h1>
+              <label class="label" >Selected Gate</label>
+              <h1>Gate {{gate}}</h1>
               <select class="form-select" aria-label="Default select example" name="gate_number">
               
-              <option selected>GATE</option>
-              <option value="1">Gate 1</option>
+              <option selected value="{{gate}}">Gate {{gate}}</option>
+              {{!-- <option value="1">Gate 1</option>
               <option value="2">Gate 2</option>
               <option value="3">Gate 3</option>
               <option value="4">Gate 4</option>
               <option value="5">Gate 5</option>
               <option value="6">Gate 6</option>
               <option value="7">Gate 7</option>
-              <option value="8">Gate 8</option>
+              <option value="8">Gate 8</option> --}}
               </select>
              <br>
               <label class="label">Select Airline</label>

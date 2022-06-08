@@ -17,9 +17,10 @@ router.get('/change-status/:id', isAuthenticated ,async (req, res) =>{
     const {id} = req.params;
     const change = await Gates.findById(id);
     change.status = "request";
+    console.log(change)
     await change.save();
     console.log(change);
-    res.redirect('/request/add?gate='+ change.gate_number)
+    res.redirect('/request/add/'+change.gate_number)
 });
 
 

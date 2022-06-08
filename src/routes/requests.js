@@ -5,8 +5,10 @@ const Request = require('../models/Request');
 const {isAuthenticated} = require('../helpers/auth')
 const nodemailer = require("nodemailer");
 
-router.get('/request/add', isAuthenticated, (req, res) =>{
-    res.render('request/new-request');
+router.get('/request/add/:gate', isAuthenticated, (req, res) =>{
+    const {gate} = req.params;
+    console.log(gate)
+    res.render('request/new-request', {gate});
 });
 
 
@@ -39,15 +41,15 @@ router.post('/request/new-request', isAuthenticated,async (req, res) =>{
         const mailOcptions = await transporter.sendMail({
             from: "AIFA Request Services", // sender address
             to: "miguelmaldo2398@gmail.com", // list of receivers
-            subject: "Solicitud de Reserva", // Subject line
-            text: "SU SOLICITUD HA SIDO RECIBIDA", // plain text body
+            subject: "Reservation request", // Subject line
+            text: "Your request has been received", // plain text body
         });
     
         console.log("menasje enviado", mailOcptions.messageId);
         const newRequest = new Request({gate_number, company, status, date_request});
         console.log(newRequest)
         await newRequest.save();
-        req.flash('success_msg', 'Se realizo la Peticion');
+        req.flash('success_msg', 'Request was sent successfully!');
         res.redirect('/gates')
         //res.send('ok')
     }
@@ -55,8 +57,8 @@ router.post('/request/new-request', isAuthenticated,async (req, res) =>{
 
 router.get('/acepted/:gate_number' , isAuthenticated, async(req, res)=>{
     const { gate_number }=req.params;
-    await Request.deleteOne({_gate_number: gate_number});
-    await Gates.findOneAndUpdate({_gate_number:gate_number}, {status:"disable"});
+    await Request.deleteOne({gate_number: gate_number});
+    await Gates.findOneAndUpdate({gate_number:gate_number}, {status:"disable"});
     res.redirect('/request');
     
     
@@ -66,8 +68,8 @@ router.get('/acepted/:gate_number' , isAuthenticated, async(req, res)=>{
 
 router.get('/declined/:gate_number' , isAuthenticated, async(req, res)=>{
     const { gate_number }=req.params;
-    await Request.deleteOne({_gate_number: gate_number});
-    await Gates.findOneAndUpdate({_gate_number:gate_number}, {status:"enable"});
+    await Request.deleteOne({gate_number: gate_number});
+    await Gates.findOneAndUpdate({gate_number:gate_number}, {status:"enable"});
     res.redirect('/request');
     
 });
