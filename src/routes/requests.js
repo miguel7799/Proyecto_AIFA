@@ -15,6 +15,7 @@ router.get('/request/add/:gate', isAuthenticated, (req, res) =>{
 
 router.post('/request/new-request', isAuthenticated,async (req, res) =>{
     const {gate_number, company, status, date_request} = req.body;
+    console.log("a")
     const errors = []
     if(!gate_number){
         errors.push({text: 'Sleccione una puerta'});
@@ -40,18 +41,20 @@ router.post('/request/new-request', isAuthenticated,async (req, res) =>{
     
         const mailOcptions = await transporter.sendMail({
             from: "AIFA Request Services", // sender address
-            to: "miguelmaldo2398@gmail.com", // list of receivers
+            to: "abrahamgdc@hotmail.com", // list of receivers
             subject: "Reservation request", // Subject line
             text: "Your request has been received", // plain text body
         });
     
         console.log("menasje enviado", mailOcptions.messageId);
+        console.log("Aqui")
         const newRequest = new Request({gate_number, company, status, date_request});
         console.log(newRequest)
         await newRequest.save();
         req.flash('success_msg', 'Request was sent successfully!');
-        res.redirect('/gates')
+        res.redirect('/change-status/'+ gate_number)
         //res.send('ok')
+        
     }
 });
 

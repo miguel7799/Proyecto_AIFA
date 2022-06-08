@@ -48,7 +48,7 @@
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="text-center">
                         {{#ifCond status '==' "enable"}}
-                        <a href="/change-status/{{_id}}" class="btn btn-danger">RESERVE</a>
+                        <a href="/request/add/{{gate_number}}" class="btn btn-danger">RESERVE</a>
                         {{else}}
                         <button href="" class="btn btn-danger" disabled>RESERVE</button>
                         {{/ifCond}}
